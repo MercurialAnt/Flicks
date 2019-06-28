@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5sp"
+    android:background="#090101"
     android:layout_width="match_parent" android:layout_height="wrap_content">
 
 
@@ -25,6 +26,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:background="#090101"
+        android:textColor="#F8F1F1"
         android:layout_toEndOf="@+id/ivBackdropImage"
         android:layout_toRightOf="@+id/ivBackdropImage"
         android:text="TextView"
@@ -36,6 +39,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
         android:layout_toEndOf="@+id/ivBackdropImage"
+        android:background="#090101"
+        android:textColor="#D5FCFCFC"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/ivBackdropImage"
