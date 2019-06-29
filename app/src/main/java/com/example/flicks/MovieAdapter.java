@@ -90,6 +90,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 .load(imageUrl)
                 .bitmapTransform(new RoundedCornersTransformation(context, 25, 0))
                 .placeholder(placeholderId)
+                .dontAnimate()
                 .error(placeholderId)
                 .into(imageView);
     }

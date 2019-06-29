@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#7C110303"
     android:layout_margin="5dp"
     tools:context=".MovieDetailsActivity">
 
@@ -44,7 +45,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:background="#7C110303"
         android:text="TextView"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivTrailer" />
@@ -60,4 +63,15 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         app:srcCompat="@drawable/flicks_backdrop_placeholder"
         />
+
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTrailer"
+        app:layout_constraintEnd_toEndOf="@+id/ivTrailer"
+        app:layout_constraintStart_toStartOf="@+id/ivTrailer"
+        app:layout_constraintTop_toTopOf="@+id/ivTrailer"
+        app:srcCompat="@android:drawable/ic_media_play" />
 </androidx.constraintlayout.widget.ConstraintLayout>

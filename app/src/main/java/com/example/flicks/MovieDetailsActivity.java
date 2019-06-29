@@ -1,6 +1,7 @@
 package com.example.flicks;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,7 @@ import org.json.JSONObject;
 import org.parceler.Parcels;
 
 import cz.msebera.android.httpclient.Header;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 import static com.example.flicks.MainActivity.API_BASE_URL;
 import static com.example.flicks.MainActivity.API_KEY_PARAM;
@@ -35,6 +37,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     TextView tvOverview;
     RatingBar rbVoteAverage;
     ImageView ivTrailer;
+    ImageView ivPlay;
 
     int movieId;
     public static final String TAG = "MovieDetailsActivity";
@@ -50,6 +53,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         tvOverview = findViewById(R.id.tvOverview);
         rbVoteAverage = findViewById(R.id.rbVoteAverage);
         ivTrailer = findViewById(R.id.ivTrailer);
+        ivPlay = findViewById(R.id.ivPlay);
 
         client = new AsyncHttpClient();
 
@@ -60,13 +64,20 @@ public class MovieDetailsActivity extends AppCompatActivity {
         tvTitle.setText(movie.getTitle());
         tvOverview.setText(movie.getOverview());
 
+        // determine the currunt orientation
+        boolean isPotrait = MovieDetailsActivity.this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+
+
+
         float voteAverage = movie.getVoteAverage().floatValue();
         rbVoteAverage.setRating(voteAverage = voteAverage > 0 ? voteAverage / 2.0f : voteAverage);
         String imageUrl = "https://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
 
         Glide.with(getApplicationContext())
                 .load(imageUrl)
+                .bitmapTransform(new RoundedCornersTransformation(MovieDetailsActivity.this, 25, 0))
                 .placeholder(R.drawable.flicks_backdrop_placeholder)
+                .dontAnimate()
                 .into(ivTrailer);
         movieId = movie.getId();
         getYoutubeVid();
@@ -105,6 +116,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 try {
                     JSONArray results = response.getJSONArray("results");
                     videoId = results.getJSONObject(1).getString("key");
+                    ivPlay.setVisibility(View.VISIBLE);
+
                 } catch (JSONException e) {
                     logError("Failed to retrieve trailer", e, true);
                 }
