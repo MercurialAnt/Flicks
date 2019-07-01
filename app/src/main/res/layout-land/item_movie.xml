@@ -45,4 +45,16 @@
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/ivBackdropImage"
         android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/ivBackdropImage"
+        android:layout_alignRight="@+id/ivBackdropImage"
+        android:layout_alignBottom="@+id/ivBackdropImage"
+        android:layout_marginEnd="448dp"
+        android:layout_marginRight="448dp"
+        android:layout_marginBottom="128dp"
+        app:srcCompat="@android:drawable/ic_media_play" />
 </RelativeLayout>
